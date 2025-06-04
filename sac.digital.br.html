@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Captura de Tela</title>
+  <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
+</head>
+<body>
+  <button id="capture" style="font-size:20px;padding:10px;margin:20px;">Capturar Tela</button>
+
+  <script>
+    document.getElementById('capture').onclick = function () {
+      html2canvas(document.body).then(function(canvas) {
+        const img = canvas.toDataURL("image/png");
+        const w = window.open();
+        w.document.write('<html><body style="margin:0"><img src="' + img + '" style="width:100%;height:auto;"></body></html>');
+        w.document.title = 'Screenshot';
+      });
+    };
+  </script>
+</body>
+</html>
