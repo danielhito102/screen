@@ -2,19 +2,22 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Captura de Tela</title>
+  <title>Captura Automática</title>
   <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
+  <style>
+    body { font-family: sans-serif; text-align: center; padding-top: 50px; }
+  </style>
 </head>
 <body>
-  <button id="capture" style="font-size:20px;padding:10px;margin:20px;">Capturar Tela</button>
+  <h1>Capturando a tela automaticamente...</h1>
 
   <script>
-    document.getElementById('capture').onclick = function () {
+    window.onload = function () {
       html2canvas(document.body).then(function(canvas) {
         const img = canvas.toDataURL("image/png");
         const w = window.open();
-        w.document.write('<html><body style="margin:0"><img src="' + img + '" style="width:100%;height:auto;"></body></html>');
-        w.document.title = 'Screenshot';
+        w.document.write('<html><body style="margin:0"><img src="' + img + '" style="width:100vw;height:auto;"/></body></html>');
+        w.document.close();
       });
     };
   </script>
